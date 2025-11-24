@@ -5,12 +5,14 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "test": "node test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
+    "mongoose": "^8.19.3",
     "uuid": "^13.0.0"
   }
 }

@@ -24,7 +24,7 @@ export const createSolarUnit = async (req, res) => {
 
 export const getSolarUnitById = async (req,res) => {
     console.log(req.params);
-    
+
     const { id } = req.params;
     const solarUnit = solarUnits.find((solarUnit) => solarUnit._id === id);
    
@@ -32,4 +32,32 @@ export const getSolarUnitById = async (req,res) => {
         return res.status(404).json({ message: "Solar unit not found" });
     }
     res.status(200).json(solarUnit);
+};
+
+export const updateSolarunit = async (req, res) => {
+    const {id} = req.params;
+    const {userId,serialNumber,installationDate,capacity,status} = req.body;
+    const solarUnit = solarUnits.find((solarUnit)=> solarUnit._id === id);
+    if (!solarUnit) {
+        return res.status(404).json({ message: "Solar unit not found" });
+    }
+    solarUnit.userId = userId;
+    solarUnit.serialNumber = serialNumber;
+    solarUnit.installationDate = installationDate;
+    solarUnit.capacity = capacity;
+    solarUnit.status = status;
+    
+    res.status(200).json(solarUnit);
+};
+
+export const deleteSolarUnit = async(req, res) => {
+    const {id} = req.params;
+    const idx = solarUnits.find((solarUnit)=> solarUnit._id === id);
+    if (idx == -1) {
+        return res.status(404).json({ message: "Solar unit not found" });
+    }
+    // solarUnits = solarUnits.filter((solarUnit)=> solarUnit._id !== id);
+    solarUnits.splice(idx, 1);
+    res.status(204).send();
+
 };
