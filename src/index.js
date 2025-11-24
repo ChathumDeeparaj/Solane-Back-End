@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import solarUnitRouter from "./api/solar-unit.js";
 import { connectDB } from "./infrastructure/db.js";
