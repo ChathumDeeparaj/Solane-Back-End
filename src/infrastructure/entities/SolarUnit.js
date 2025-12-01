@@ -1,6 +1,12 @@
 import mongoose from "mongoose";
 
 const solarUnitSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+    
     serialNumber:{
         type: String,
         required: true,
@@ -15,6 +21,17 @@ const solarUnitSchema = new mongoose.Schema({
     capacity: {
         type: Number,
         required: true,
+    },
+
+    // houseId:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "House",
+    //     required: true,
+    // },
+
+    energyGenarationrecord:{
+        type:[mongoose.Schema.Types.ObjectId],
+        ref:"EnergyGenarationRecord",
     },
 
     status: {
