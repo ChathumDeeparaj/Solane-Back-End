@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import { SolarUnit } from "./entities/SolarUnit";
-import { EnergyGenerationRecord } from "./entities/EnergyGenretionRecord";
+import { EnergyGenerationRecord } from "./entities/EnergyGenerationRecord";
+import { User } from "./entities/User";
+import dotenv from "dotenv";
 import { connectDB } from "./db";
 
 dotenv.config();
@@ -14,11 +15,19 @@ async function seed() {
     // Clear existing data
     await EnergyGenerationRecord.deleteMany({});
     await SolarUnit.deleteMany({});
+    await User.deleteMany({});
+
+    // Create a new user
+    const user = await User.create({
+      name: "Alice Example",
+      email: "alice@example.com",
+    });
 
     // Create a new solar unit linked to the user
     const solarUnit = await SolarUnit.create({
+      userId: user._id,
       serialNumber: "SU-0001",
-      installationDate: new Date("2025-11-26"),
+      installationDate: new Date("2025-09-21"),
       capacity: 5000,
       status: "ACTIVE",
     });
@@ -30,7 +39,7 @@ async function seed() {
       records.push({
         solarUnitId: solarUnit._id,
         timestamp: new Date(baseDate.getTime() + i * 2 * 60 * 60 * 1000), // every 2 hours
-        energyGenarated: 100 + i * 10, // e.g., 100, 110, ..., 190
+        energyGenerated: 100 + i * 10, // e.g., 100, 110, ..., 190
       });
     }
     await EnergyGenerationRecord.insertMany(records);

@@ -29,10 +29,10 @@ const solarUnitSchema = new mongoose.Schema({
     //     required: true,
     // },
 
-    energyGenarationrecord:{
-        type:[mongoose.Schema.Types.ObjectId],
-        ref:"EnergyGenarationRecord",
-    },
+    // energyGenarationrecord:{
+    //     type:[mongoose.Schema.Types.ObjectId],
+    //     ref:"EnergyGenarationRecord",
+    // },
 
     status: {
         type: String,

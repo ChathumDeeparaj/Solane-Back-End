@@ -1,5 +1,6 @@
-import { EnergyGenerationRecord } from "../infrastructure/entities/EnergyGenretionRecord";
+import { EnergyGenerationRecord } from "../infrastructure/entities/EnergyGenerationRecord";
 import { Request, Response } from "express";
+
 
 export const getAllEnergyGenerationRecordsBySolarUnitId = async (req: Request, res: Response) => {
   try {
