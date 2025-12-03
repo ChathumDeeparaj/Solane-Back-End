@@ -1,8 +1,9 @@
 import { solarUnits } from "../infrastructure/data.js";
 import { v4 as uuidv4 } from 'uuid';
 import { SolarUnit } from "../infrastructure/entities/SolarUnit.js";
+import { Request, Response } from "express";
 
-export const getAllSolarUnits = async (req,res) => {
+export const getAllSolarUnits = async (req: Request, res: Response) => {
     try{
         const solarUnits = await SolarUnit.find(); //this is a promise
         res.status(200).json(solarUnits);
@@ -13,7 +14,7 @@ export const getAllSolarUnits = async (req,res) => {
     }
 };
 
-export const createSolarUnit = async (req, res) => {
+export const createSolarUnit = async (req: Request, res: Response) => {
     try{
         const {serialNumber,installationDate,capacity,status } = req.body;
 
@@ -32,7 +33,7 @@ export const createSolarUnit = async (req, res) => {
    
 };
 
-export const getSolarUnitById = async (req,res) => {
+export const getSolarUnitById = async (req: Request, res: Response) => {
     try{
         console.log(req.params);
 
@@ -50,7 +51,7 @@ export const getSolarUnitById = async (req,res) => {
 
 };
 
-export const updateSolarUnit = async (req, res) => {
+export const updateSolarUnit = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { serialNumber, installationDate, capacity, status } = req.body;
     const solarUnit = await SolarUnit.findById(id);
@@ -69,7 +70,7 @@ export const updateSolarUnit = async (req, res) => {
     res.status(200).json(updatedSolarUnit);
   };
 
-  export const deleteSolarUnit = async (req, res) => {
+  export const deleteSolarUnit = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
       const solarUnit = await SolarUnit.findById(id);

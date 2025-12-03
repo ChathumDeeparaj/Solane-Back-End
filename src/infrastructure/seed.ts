@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { SolarUnit } from "./entities/SolarUnit.js";
-import { EnergyGenerationRecord } from "./entities/EnergyGenretionRecord.js";
-import { connectDB } from "./db.js";
+import { SolarUnit } from "./entities/SolarUnit";
+import { EnergyGenerationRecord } from "./entities/EnergyGenretionRecord";
+import { connectDB } from "./db";
 
 dotenv.config();
 

@@ -2,13 +2,11 @@
   "name": "aelora-back-end",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
-  "type": "module",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "seed": "ts-node src/infrastructure/seed.js",
-    "build": "npm install && tsc",
-    "start": "node ./dist/index.js"
+    "dev": "nodemon src/index.ts",
+    "seed": "ts-node src/infrastructure/seed.ts"
+    
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +17,7 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "nodemon": "^3.1.11"
   }
 }
