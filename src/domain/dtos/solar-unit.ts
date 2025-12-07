@@ -6,5 +6,4 @@ export const CreateSolarUnitDto = z.object({
   capacity: z.number(),
   status: z.enum(["ACTIVE", "INACTIVE", "MAINTENANCE"]),
   userId: z.string().min(1),
-  
 });

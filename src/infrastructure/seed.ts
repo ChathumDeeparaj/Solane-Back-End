@@ -27,14 +27,14 @@ async function seed() {
     const solarUnit = await SolarUnit.create({
       userId: user._id,
       serialNumber: "SU-0001",
-      installationDate: new Date("2025-09-21"),
+      installationDate: new Date("2025-12-08"),
       capacity: 5000,
       status: "ACTIVE",
     });
 
     // Create 10 sequential energy generation records every 2 hours
     const records = [];
-    const baseDate = new Date("2025-09-21T00:00:00Z");
+    const baseDate = new Date("2025-12-08T00:00:00Z");
     for (let i = 0; i < 10; i++) {
       records.push({
         solarUnitId: solarUnit._id,

@@ -1,13 +1,8 @@
-import { solarUnits } from "../infrastructure/data";
-import { v4 as uuidv4 } from 'uuid';
+import { z } from "zod";
+import { CreateSolarUnitDto } from "../domain/dtos/solar-unit";
 import { SolarUnit } from "../infrastructure/entities/SolarUnit";
 import { NextFunction, Request, Response } from "express";
-import { CreateSolarUnitDto} from "../domain/dtos/solar-unit";
-import { ValidationError } from "../domain/errors/errors";
-import { z } from "zod";
-import { NotFoundError } from "../domain/errors/errors";
-
-
+import { NotFoundError, ValidationError } from "../domain/errors/errors";
 
 export const getAllSolarUnits = async (
   req: Request,

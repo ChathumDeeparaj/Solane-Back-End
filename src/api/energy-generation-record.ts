@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllEnergyGenerationRecordsBySolarUnitId } from "../application/energy-genartion-record";
+import { getAllEnergyGenerationRecordsBySolarUnitId } from "../application/energy-genertion-record";
 
 const energyGenerationRecordRouter = express.Router();
 

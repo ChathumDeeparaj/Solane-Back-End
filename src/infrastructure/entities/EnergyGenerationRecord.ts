@@ -24,7 +24,5 @@ const energyGenerationRecordSchema = new mongoose.Schema({
 
 export const EnergyGenerationRecord = mongoose.model(
   "EnergyGenerationRecord",
-  energyGenerationRecordSchema,
-  "energygenerationrecords" // Explicitly set collection name to avoid duplicates
+  energyGenerationRecordSchema
 );
-

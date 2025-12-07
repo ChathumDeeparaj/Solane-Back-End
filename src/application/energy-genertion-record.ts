@@ -1,7 +1,6 @@
 import { EnergyGenerationRecord } from "../infrastructure/entities/EnergyGenerationRecord";
 import { NextFunction, Request, Response } from "express";
 
-
 export const getAllEnergyGenerationRecordsBySolarUnitId = async (
   req: Request,
   res: Response,
