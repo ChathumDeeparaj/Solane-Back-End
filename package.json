@@ -7,7 +7,7 @@
     "dev:ngrok": "ngrok start back-end --config=ngrok.yml",
     "dev": "nodemon src/index.ts",
     "seed": "ts-node src/infrastructure/seed.ts",
-    "build": "npm install && tsc",
+    "build": "tsc",
     "start": "node ./dist/index.ts"
   },
   "author": "",
@@ -31,5 +31,8 @@
     "nodemon": "^3.1.11",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.0.0"
   }
 }

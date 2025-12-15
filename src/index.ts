@@ -13,7 +13,7 @@ import weatherRouter from "./api/weather";
 import capacityFactorRouter from "./api/capacity-factor";
 
 const server = express();
-server.use(cors({ origin: "http://localhost:5173" }));
+server.use(cors({ origin: process.env.FRONTEND_URL || "http://fed-4-front-end-chathum.netlify.app" }));
 
 server.use(loggerMiddleware);
 
