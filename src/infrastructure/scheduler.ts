@@ -1,5 +1,6 @@
 import cron from 'node-cron';
 import { syncEnergyGenerationRecords } from '../application/background/sync-energy-generation-records';
+import { generateInvoices } from '../application/background/generate-invoices';
 
 export const initializeScheduler = () => {
   // Run daily at 00:00 (midnight) - cron expression: '0 0 * * *'
@@ -9,6 +10,7 @@ export const initializeScheduler = () => {
     console.log(`[${new Date().toISOString()}] Starting daily energy generation records sync...`);
     try {
       await syncEnergyGenerationRecords();
+      await generateInvoices();
       console.log(`[${new Date().toISOString()}] Daily sync completed successfully`);
     } catch (error) {
       console.error(`[${new Date().toISOString()}] Daily sync failed:`, error);
