@@ -14,6 +14,14 @@ import capacityFactorRouter from "./api/capacity-factor";
 import { handleStripeWebhook } from "./application/payment";
 import invoiceRouter, { adminInvoiceRouter } from "./api/invoice";
 import paymentRouter from "./api/payment";
+import anomaliesRouter from "./api/anomalies";
+import cron from "node-cron";
+import { runAnomalyDetectionSystem } from "./application/anomaly-detection";
+import { initializeScheduler } from "./infrastructure/scheduler";
+
+// Initialize DB and Scheduler
+connectDB();
+initializeScheduler();
 
 const server = express();
 server.use(cors({ origin: "http://localhost:5173" }));
@@ -41,10 +49,15 @@ server.use("/api/capacity-factor", capacityFactorRouter);
 server.use("/api/invoices", invoiceRouter);
 server.use("/api/admin", adminInvoiceRouter);
 server.use("/api/payments", paymentRouter);
+server.use("/api/anomalies", anomaliesRouter);
+
+// Schedule Anomaly Detection: Run every hour
+cron.schedule("0 * * * *", () => {
+  console.log("Running scheduled anomaly detection...");
+  runAnomalyDetectionSystem();
+});
 
 server.use(globalErrorHandler);
-
-connectDB();
 
 const PORT = process.env.PORT || 8000;
 server.listen(PORT, () => {
