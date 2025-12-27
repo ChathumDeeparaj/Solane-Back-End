@@ -24,7 +24,7 @@ connectDB();
 initializeScheduler();
 
 const server = express();
-server.use(cors({ origin: "https://fed-4-front-end-manupa.netlify.app" }));
+server.use(cors({ origin: "https://fed-4-front-end-chathum.netlify.app/" }));
 
 server.use(loggerMiddleware);
 
