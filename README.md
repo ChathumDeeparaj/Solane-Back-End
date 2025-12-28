@@ -1,2 +1,8 @@
-# Aelora-Backend
-Backend for Aelora: A smart home energy management and monitoring platform built with Node.js
+Backend Repo :- 
+
+Data Api Repo :-
+
+- Deployed links of your
+    - Front-end
+    - Back-end
+    - Data-API
