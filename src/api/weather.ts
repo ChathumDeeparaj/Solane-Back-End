@@ -45,7 +45,8 @@ router.get("/", async (req, res) => {
     // Call Data API to fetch weather data
     // Robustly handle whether /api is included or not in env var
     const envDataApiUrl = DATA_API_URL;
-    const apiBase = envDataApiUrl.endsWith('/api') ? envDataApiUrl : `${envDataApiUrl}/api`;
+    const cleanUrl = envDataApiUrl.replace(/\/+$/, "");
+    const apiBase = cleanUrl.endsWith("/api") ? cleanUrl : `${cleanUrl}/api`;
 
     const dataApiUrl = `${apiBase}/weather?latitude=${latitude}&longitude=${longitude}`;
 
