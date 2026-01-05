@@ -28,7 +28,7 @@ export const syncEnergyGenerationRecords = async () => {
                 .sort({ timestamp: -1 });
 
             // Build URL with sinceTimestamp query parameter
-            // Build URL with sinceTimestamp query parameter
+            const dataApiUrl = process.env.DATA_API_URL || "http://localhost:8001/api";
             // Robustly handle whether /api is included or not
             const cleanUrl = dataApiUrl.replace(/\/+$/, "");
             const apiBase = cleanUrl.endsWith("/api") ? cleanUrl : `${cleanUrl}/api`;
