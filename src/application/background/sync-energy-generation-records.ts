@@ -30,13 +30,10 @@ export const syncEnergyGenerationRecords = async () => {
             // Build URL with sinceTimestamp query parameter
             // Build URL with sinceTimestamp query parameter
             const dataApiUrl = process.env.DATA_API_URL || "http://localhost:8001/api";
-            // Check if user accidentally included /api suffix in env var (robustness)
-            const sanitizedUrl = dataApiUrl.endsWith('/api') ? dataApiUrl : `${dataApiUrl}/api`; /* Actually, better to stick to standard handling or trust the env var. The user was told to remove /api. */
+            // Robustly handle whether /api is included or not
+            const apiBase = dataApiUrl.endsWith('/api') ? dataApiUrl : `${dataApiUrl}/api`;
 
-            // Let's stick to the pattern used in sync-middleware.ts but simpler:
-            // The middleware uses: `${dataApiUrl}/energy-generation-records...` assuming no /api in var.
-            // Let's use:
-            const baseUrl = `${process.env.DATA_API_URL || "http://localhost:8001"}/api/energy-generation-records/solar-unit/${solarUnit.serialNumber}`;
+            const baseUrl = `${apiBase}/energy-generation-records/solar-unit/${solarUnit.serialNumber}`;
             const url = new URL(baseUrl);
 
             if (lastSyncedRecord?.timestamp) {
